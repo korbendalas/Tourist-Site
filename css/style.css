@@ -1,0 +1,212 @@
+/*
+COLORS:
+
+Light green: #7ed56f
+Medium green: #55c57a
+Dark green: #28b485
+
+*/
+
+/*
+Ovo se radi svaki put na pocetku, resetuju se elementi,
+jer svaki browser dodaje neki svoj padding i marginu
+
+BUKVALNO PRAVIS RESET
+*/
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: "Lato", sans-serif;
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 1.7;
+  color: #777;
+  padding: 30px;
+  /*daje padding celom sajtu, uokviruje ga*/
+}
+
+.header {
+  height: 95vh;
+  /*95% of viewport*/
+  background-image: linear-gradient( to right bottom, rgba(126, 213, 111, 0.79), rgba(40, 180, 133, 0.8)), url(../img/hero.jpg);
+  /*prvo ide gradient iznad slike, pa opacity na 0.8 u RGBA*/
+  background-size: cover;
+  /*da fituje element u bilo koji viewport*/
+  background-position: top;
+  /*da pozadinska slika bude uvek na vrhu browsera
+da je ne cropuje kad se smanjuje velicina viewporta*/
+  clip-path: polygon(0 0, 100% 0, 100% 75vh, 0 100%);
+  position: relative;
+}
+
+.logo-box {
+  position: absolute;
+  top: 40px;
+  left: 40px;
+}
+
+.logo {
+  height: 35px;
+}
+
+/* .logo:hover{
+  animation: moveInRight 1s ease-out;
+} */
+
+.text-box {
+  position: absolute;
+  top: 40%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  text-align: center;
+}
+
+.primary-heading {
+  color: white;
+  text-transform: uppercase;
+  backface-visibility: hidden;
+  /*nesto zbog animacije da se ne mrda*/
+  margin-bottom: 60px;
+}
+
+.primary-heading-main {
+  display: block;
+  /*da podeli span jedan ispod drugog*/
+  font-size: 60px;
+  font-weight: 300;
+  letter-spacing: 35px;
+  animation-name: moveInLeft;
+  animation-duration: 1s;
+  animation-timing-function: ease-out;
+}
+
+.primary-heading-sub {
+  font-size: 20px;
+  font-weight: 400;
+  letter-spacing: 17.4px;
+  display: block;
+  animation-name: moveInRight;
+  animation-duration: 1s;
+  animation-timing-function: ease-out;
+}
+
+@keyframes moveInLeft {
+  0% {
+    opacity: 0;
+    /*pocetna vrednost*/
+    transform: translateX(-100px);
+    /*pomera element 100px ulevo po x osi*/
+  }
+  80% {
+    transform: translateX(10px);
+  }
+  100% {
+    opacity: 1;
+    transform: translate(0);
+    /*pozicionira ga na definisano mesto, zato 8*/
+    ;
+  }
+}
+
+@keyframes moveInRight {
+  0% {
+    opacity: 0;
+    /*pocetna vrednost*/
+    transform: translateX(100px);
+    /*pomera element 100px ulevo po x osi*/
+  }
+  80% {
+    transform: translateX(-10px);
+  }
+  100% {
+    opacity: 1;
+    transform: translate(0);
+    /*pozicionira ga na definisano mesto, zato 0*/
+  }
+}
+
+@keyframes moveInBottom {
+  0% {
+    opacity: 0;
+    /*pocetna vrednost*/
+    transform: translateY(30px);
+    /*pomera element 100px ulevo po x osi*/
+  }
+  100% {
+    opacity: 1;
+    transform: translate(0);
+    /*pozicionira ga na definisano mesto, zato 0*/
+  }
+}
+
+.btn:link, .btn:visited {
+  text-transform: uppercase;
+  text-decoration: none;
+  padding: 15px 40px;
+  display: inline-block;
+  /* da bi pozicionali na centar,
+  posto je inline element, stavljamo .
+  text-box vrednost textpalign:center; */
+  border-radius: 100px;
+  /*da zaokruzi ivice dugmeta*/
+  transition: all 0.2s;
+  /* nesto oko animacije da bude smooth */
+  position: relative;
+  /* da bi button iza njega bio sakriven */
+}
+
+.btn:hover {
+  transform: translateY(-3px);
+  /* kad se predje misem preko dugmeta */
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+  /*senka ispod dugmeta,x, y, blur, boja i transparency*/
+}
+
+.btn:active {
+  transform: translateY(-1px);
+  /* animacija kad se klikne dugme  */
+  box-shadow: 0 5px 10px rgba(0, 0, 0, 0.2);
+  /* kad se klikne da senka izgleda blize */
+}
+
+.btn-white {
+  background-color: white;
+  color: #777;
+}
+
+.btn::after {
+  content: "";
+  display: inline-block;
+  height: 100%;
+  width: 100%;
+  border-radius: 100px;
+  position: absolute;
+  /*da pozicioniram iza dugmeta*/
+  top: 0;
+  left: 0;
+  z-index: -1;
+  transition: all .4s;
+}
+
+.btn-white::after {
+  background-color: white;
+}
+
+/* ::after se tretira kao child element elementa posle kojeg dolazi */
+
+.btn:hover::after {
+  transform: scaleX(1.4) scaleY(1.6);
+  opacity: 0;
+}
+
+.btn-animated {
+  animation: moveInBottom 0.4s ease-out .75s;
+  /*animacija,duzina trajanja, nacin tranzicije, delay*/
+  animation-fill-mode: backwards;
+  /* da ne bude vidljivo kad pocne animacija */
+}
