@@ -1,0 +1,19 @@
+{
+  "name": "Natours",
+  "version": "1.0.0",
+  "description": "Mountain projest",
+  "main": "index.js",
+  "repository": "https://github.com/korbendalas/Tourist-Site.git",
+  "author": "korbendalas <daliborpetric99@gmail.com>",
+  "license": "MIT",
+  "devDependencies": {
+    "node-sass": "^4.9.2"
+  },
+  "scripts": {
+    "compile-sass": "node-sass ./sass/main.scss ./css/style.css --watch",
+    "_comment": "skripta za kompajliranje sassa, sam pises naziv, onda ide koji dependency koristis, koji fajl, i gde kompajliras "
+  },
+  "dependencies": {
+    "live-server": "^1.2.0"
+  }
+}

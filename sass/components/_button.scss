@@ -1,0 +1,95 @@
+.btn:link,
+.btn:visited {
+    text-transform: uppercase;
+    text-decoration: none;
+    padding: 1.5rem 4rem;
+    display: inline-block;
+    /* da bi pozicionali na centar,
+  posto je inline element, stavljamo .
+  text-box vrednost textpalign:center; */
+    border-radius: 10rem;
+    /*da zaokruzi ivice dugmeta*/
+    transition: all 0.2s;
+    /* nesto oko animacije da bude smooth */
+    position: relative;
+    /* da bi button iza njega bio sakriven */
+    font-size: $default-font-size;
+}
+
+.btn:hover {
+    transform: translateY(-0.3rem);
+    /* kad se predje misem preko dugmeta */
+    box-shadow: 0 1rem 2rem rgba($color-black, 0.2);
+    /*senka ispod dugmeta,x, y, blur, boja i transparency*/
+}
+
+.btn:active {
+    transform: translateY(-1px);
+    /* animacija kad se klikne dugme  */
+    box-shadow: 0 0.5rem 1rem rgba($color-black, 0.2);
+    /* kad se klikne da senka izgleda blize */
+}
+
+.btn-white {
+    background-color: $color-white;
+    color: $color-gray-dark;
+}
+
+.btn::after {
+    content: "";
+    display: inline-block;
+    height: 100%;
+    width: 100%;
+    border-radius: 10rem;
+    position: absolute;
+    /*da pozicioniram iza dugmeta*/
+    top: 0;
+    left: 0;
+    z-index: -1;
+    transition: all .4s;
+}
+
+.btn-white::after {
+    background-color: $color-white;
+}
+
+/* ::after se tretira kao child element elementa posle kojeg dolazi */
+
+.btn:hover::after {
+    transform: scaleX(1.4) scaleY(1.6);
+    opacity: 0;
+}
+
+.btn-animated {
+    animation: moveInBottom 0.4s ease-out .75s;
+    /*animacija,duzina trajanja, nacin tranzicije, delay*/
+    animation-fill-mode: backwards;
+    /* da ne bude vidljivo kad pocne animacija */
+}
+
+
+.btn-text {
+    &:link,
+    &:visited {
+        //normalno stanje
+        font-size: $default-font-size;
+        color: $color-primary;
+        display: inline-block;
+        text-decoration: none;
+        border-bottom: 1px solid $color-primary;
+        padding: 3px;
+        transition: all .2s;
+    }
+    &:hover {
+        background-color: $color-primary;
+        color: $color-white;
+        box-shadow: 0 1rem 3.5rem rgba($color-black, .15); //senka ispod dugmeta,x, y, blur, boja i transparency
+        transform: translateY(-2px);
+    }
+    &:active {
+        //on click
+        box-shadow: 0 1rem 3.5rem rgba($color-black, .15); //senka ispod dugmeta,x, y, blur, boja i transparency
+        transform: translateY(0);
+    }
+
+}

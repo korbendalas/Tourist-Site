@@ -1,0 +1,30 @@
+//partial scss file _base.scss
+
+/*
+Ovo se radi svaki put na pocetku, resetuju se elementi,
+jer svaki browser dodaje neki svoj padding i marginu
+
+BUKVALNO PRAVIS RESET
+*/
+
+*,
+*::after,
+*::before{
+  margin: 0;
+  padding: 0;
+ box-sizing: inherit; //nasledjeno iz body
+}
+
+html{
+    //definise koliko je 1 rem :)
+    font-size: 62.5%;
+    
+    
+//    font-size:10px;
+    //zato sto je rem root font size 16 px, stavljam 10px da bude root font size, tako da je 1rem=10px. VAU!!!!!!!
+}
+
+body {
+  
+     box-sizing: border-box; //odavde ga nasledjuje u *
+}
