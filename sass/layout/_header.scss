@@ -8,6 +8,7 @@
   background-position: top;
   /*da pozadinska slika bude uvek na vrhu browsera
 da je ne cropuje kad se smanjuje velicina viewporta*/
+  -webkit-clip-path: polygon(0 0, 100% 0, 100% 75vh, 0 100%);//da sljaka u svim browserima  
   clip-path: polygon(0 0, 100% 0, 100% 75vh, 0 100%);
   position: relative;
     
